@@ -1,24 +1,53 @@
-# SharePoint Online View It (spo_view_it)
-Chrome extension to force SharePoint Online to use Reading View for Word and Excel documents
+# SharePoint Online: View by Default
 
+![Banner Image](assets/promotional/marquee.png)
 
-Available on [Chrome Web Store: SPO View It](https://chrome.google.com/webstore/detail/spo-view-it/omljlibfjloccmdmmlpcnlijjneabhjm)
+A modernised, Manifest V3 (MV3) compliant fork of [spo_view_it](https://github.com/jftuga/spo_view_it).
 
-Sometimes SharePoint Online defaults to opening a Word or Excel document in the *Editing View* instead of the preferred *Reading View*.
+---
 
-* this extension changes the URL so that the *Reading View* is opened
-* this is done by changing the URL parameter: `action=default` to `DefaultItemOpen=1&Action=View`
-* you will still be able to then use: Edit Document -> Edit in Browser
+## Overview
 
-Icon Used: http://www.iconarchive.com/show/influenza-icons-by-cute-little-factory/Aspirin-icon.html
+SharePoint Online opens documents in **Edit** mode by default. This extension rewrites a URL parameter on navigation to force **View** mode instead, preventing accidental edits.
 
-____
+Switching back to Edit mode works as normal — the extension does not interfere with SharePoint's own mode-switching behaviour.
 
-## July 2020 Update
+---
 
-The SharePoint online backend must have changed and `version 1.0` is no longer compatible.  You will need to upgrade this extension to `version 1.1`.
+## Implementation
 
-This is how `version 1.1` changes a *sharepoint.com* URL:
-* Removes any `action=` parameter
-* Removes any `mobileredirect=` parameter
-* Then appends: `DefaultItemOpen=1&Action=View` to the end of the URL
+When SharePoint Online loads a document, the URL contains parameters such as: `&action=default&mobileredirect=true`
+
+The extension rewrites these to: `&DefaultItemOpen=1&Action=View`
+
+This is handled entirely by a static `declarativeNetRequest` ruleset — no JavaScript or service worker is required. The rule activates only on URLs matching `https://*.sharepoint.com/*`.
+
+---
+
+## Permissions
+
+| Permission | Reason |
+| ---------- | ------ |
+| `declarativeNetRequest` | Applies the static URL rewrite rule |
+| `https://*.sharepoint.com/*` | Scopes the rule to SharePoint Online only |
+
+No data is read, stored, or transmitted.
+
+---
+
+## Installation
+
+> [!NOTE]  
+> This extension is not yet available on the Chrome Web Store  
+> Manual installation is required
+
+1. Clone or download this repository.
+2. Open Chrome and navigate to `chrome://extensions`.
+3. Enable **Developer mode** in the top right.
+4. Click **Load unpacked** and select the extension folder.
+
+---
+
+## Acknowledgement
+
+Based on [spo_view_it](https://github.com/jftuga/spo_view_it) by [@jftuga](https://github.com/jftuga).
