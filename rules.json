@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "removeParams": [
+              "action",
+              "Action",
+              "mobileredirect",
+              "DefaultItemOpen"
+            ],
+            "addOrReplaceParams": [
+              {
+                "key": "Action",
+                "value": "View"
+              },
+              {
+                "key": "DefaultItemOpen",
+                "value": "1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||sharepoint.com/*sourcedoc=*action=*",
+      "resourceTypes": [
+        "main_frame",
+        "sub_frame"
+      ]
+    }
+  }
+]
