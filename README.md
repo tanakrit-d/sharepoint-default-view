@@ -1,8 +1,9 @@
-# SharePoint Online: View by Default
 
-![Marquee](assets/images/marquee.png)
-
-A modernised, Manifest V3 (MV3) compliant fork of [spo_view_it](https://github.com/jftuga/spo_view_it).
+<div align="center">
+    <img src="assets/icons/128.png" alt="Logo" width="100">
+    <p>A modernised, Manifest V3 (MV3) compliant fork of <a href="https://github.com/jftuga/spo_view_it">spo_view_it</a>
+</p>
+</div>
 
 ---
 
@@ -10,7 +11,7 @@ A modernised, Manifest V3 (MV3) compliant fork of [spo_view_it](https://github.c
 
 SharePoint Online opens documents in **Edit** mode by default. This extension rewrites a URL parameter on navigation to force **View** mode instead, preventing accidental edits.
 
-Switching back to Edit mode works as normal — the extension does not interfere with SharePoint's own mode-switching behaviour.
+Switching back to Edit mode works as normal - the extension does not interfere with SharePoint's own mode-switching behaviour.
 
 ---
 
@@ -20,7 +21,7 @@ When SharePoint Online loads a document, the URL contains parameters such as: `&
 
 The extension rewrites these to: `&DefaultItemOpen=1&Action=View`
 
-This is handled entirely by a static `declarativeNetRequest` ruleset — no JavaScript or service worker is required. The rule activates only on URLs matching `https://*.sharepoint.com/*`.
+This is handled entirely by a static `declarativeNetRequest` ruleset - no JavaScript or service worker is required. The rule activates only on URLs matching `https://*.sharepoint.com/*`.
 
 ---
 
