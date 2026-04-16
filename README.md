@@ -1,6 +1,6 @@
 # SharePoint Online: View by Default
 
-![Banner Image](assets/promotional/marquee.png)
+![Marquee](assets/images/marquee.png)
 
 A modernised, Manifest V3 (MV3) compliant fork of [spo_view_it](https://github.com/jftuga/spo_view_it).
 
